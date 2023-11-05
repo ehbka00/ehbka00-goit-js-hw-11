@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
-import SimpleLightbox from 'SimpleLightbox';
+import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
+
 import { renderGalleryPosts} from "./js/renderGallery.js";
 import {getGallery} from './js/gallery-api.js'
 
@@ -85,6 +86,6 @@ function changeScrollProperties() {
         top: cardHeight * 3,
         behavior: "smooth",
     });
-  }
+}
 
   
