@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #283b99;
+}
+.search-form-wrapp {
+  width: 370px;
+  padding: 15px 0;
+}
+.search-form { 
+  display: flex;
+}
+.searchfield {
+  width: 350px;
+}
+.image {
+  width: 15px;
+  cursor: pointer;
+}
