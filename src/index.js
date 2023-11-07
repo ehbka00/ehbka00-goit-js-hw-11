@@ -19,7 +19,11 @@ searchBtn.addEventListener('click', async (e) => {
     currentPage = 1;
     galleryBtn.classList.contains('display-flx') ? galleryBtn.classList.remove('display-flx'):null;
 
-    requestGetGallery();
+    try {
+        await requestGetGallery();
+    } catch (error) {
+       console.log("Request failed.");
+    }
 });
 
 function handleGalleryResponse(response) {
@@ -41,7 +45,7 @@ function handleGalleryResponse(response) {
         } else {
             galleryElem.insertAdjacentHTML("beforeend", renderGalleryPosts(responseData.data.hits));
         }
-        updateGallery();
+        updateGallery(responseData.data.hits.length);
     }
 }
 
@@ -49,12 +53,18 @@ loadMoreBtn.addEventListener("click", async (e)=> {
     currentPage += 1;
     galleryBtn.classList.remove('display-flx');  
 
-    requestGetGallery();
+    try {
+        await requestGetGallery();
+    } catch (error) {
+        console.log("Request failed.");
+    }
 });
 
-function updateGallery() {
+function updateGallery(hits) {
     lightbox.refresh();
-    galleryElem.nextElementSibling.classList.add('display-flx');
+    if (hits >= 40) {
+        galleryElem.nextElementSibling.classList.add('display-flx');
+    }
     changeScrollProperties();
 }
 
